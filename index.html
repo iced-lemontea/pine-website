@@ -3,445 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pine Ink - Digital Solutions Inspired by Nature</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <title>Pine Ink | Blockchain Research & Development</title>
+    <meta name="description" content="Pine Ink is a collective of engineers researching high-velocity decentralized infrastructure.">
     <script src="https://unpkg.com/feather-icons"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              pine: {
-                50: '#f0fdf4',
-                100: '#dcfce7',
-                200: '#bbf7d0',
-                300: '#86efac',
-                400: '#4ade80',
-                500: '#22c55e',
-                600: '#16a34a',
-                700: '#15803d',
-                800: '#166534',
-                900: '#14532d',
-              },
-              ink: {
-                50: '#f8fafc',
-                100: '#f1f5f9',
-                200: '#e2e8f0',
-                300: '#cbd5e1',
-                400: '#94a3b8',
-                500: '#64748b',
-                600: '#475569',
-                700: '#334155',
-                800: '#1e293b',
-                900: '#0f172a',
-              }
-            }
-          }
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0f0f0f;
+            --bg-card: #141414;
+            /* Pine Green base */
+            --accent: #2d6a4f; 
+            /* Academic/Tech Green for highlights */
+            --accent-glow: #10b981; 
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --border: #27272a;
         }
-      }
-    </script>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        h1 { font-size: 4rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .mono { font-family: 'Courier New', monospace; letter-spacing: -0.05em; }
+        .text-accent { color: var(--accent-glow); }
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding { padding: 8rem 0; }
+
+        /* Navbar */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-glow); }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tagline {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-glow);
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--accent);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* Abstract Grid Background */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100vh;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-glow);
+        }
+
+        /* Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat h3 { font-size: 2rem; color: white; margin-bottom: 0.25rem; }
+        .stat p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* Project Section (Gelatine) */
+        .project-showcase {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border);
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-showcase::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; width: 4px;
+            background: var(--accent-glow);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-glow);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .feature-list li {
+            border-left: 2px solid var(--border);
+            padding-left: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Button */
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            border-bottom: 1px solid var(--accent-glow);
+            padding-bottom: 2px;
+        }
+        
+        .btn-link:hover { color: var(--accent-glow); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+            .project-showcase { padding: 2rem; }
+            .feature-list { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-<body class="bg-white text-ink-900 font-sans antialiased">
-    <custom-navbar></custom-navbar>
+<body>
 
-    <header class="bg-white py-4 flex justify-center border-b border-pine-100">
-    <img src="logo.png" alt="Pine Ink Logo" class="h-48 md:h-64 object-contain">
-</header>
-    
-    <section class="relative overflow-hidden bg-gradient-to-br from-pine-50 to-pine-100">
-      <div class="absolute inset-0 z-0 opacity-20">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center mix-blend-overlay"></div>
-      </div>
-      <div class="container mx-auto px-6 py-24 md:py-32 lg:py-40 relative z-10">
-        <div class="max-w-3xl mx-auto text-center">
-          <h1 class="text-4xl md:text-6xl font-bold text-pine-900 mb-6 animate-fadeIn">
-            Grow Your Digital Presence<br>
-            <span class="text-pine-600">Like a Pine Forest</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-ink-700 mb-10 max-w-2xl mx-auto animate-fadeIn delay-100">
-            Pine Ink combines nature's resilience with digital innovation to help your business thrive.
-          </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeIn delay-200">
-            <a href="#demo" class="bg-pine-600 hover:bg-pine-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105">
-              Request Demo
+    <div class="bg-grid"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <i data-feather="cpu"></i> PINE INK
             </a>
-            <a href="#features" class="bg-white hover:bg-pine-50 text-pine-700 font-medium py-3 px-8 rounded-lg border border-pine-300 shadow transition-all transform hover:scale-105">
-              Explore Features
-            </a>
-          </div>
+            <div class="nav-links">
+                <a href="#research">Research</a>
+                <a href="#deployment">Deployment</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
-      </div>
-      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-10"></div>
+    </nav>
+
+    <header class="container hero">
+        <div style="max-width: 800px;">
+            <span class="tagline">LABORATORY ACTIVE</span>
+            <h1 class="text-gradient">We engineer the<br>resilience layer.</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px;">
+                Pine Ink is a technical research collective dedicated to solving blockchain brittleness. 
+                We deploy high-velocity, elastic consensus protocols for the next generation of decentralized finance.
+            </p>
+            
+            <div class="stat-grid">
+                <div class="stat">
+                    <h3>Active</h3>
+                    <p>Status</p>
+                </div>
+                <div class="stat">
+                    <h3>EVM</h3>
+                    <p>Standard</p>
+                </div>
+                <div class="stat">
+                    <h3>QBFT</h3>
+                    <p>Protocol</p>
+                </div>
+                <div class="stat">
+                    <h3>R&D</h3>
+                    <p>Focus</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="research" class="container section-padding">
+        <div class="grid-2">
+            <div>
+                <h2 class="mono">HYPOTHESIS_01</h2>
+                <h3 style="margin-bottom: 1rem;">The Problem of Rigidity</h3>
+                <p style="color: var(--text-muted);">
+                    In a digital universe defined by "hard" forks and immutable ledgers, traditional chains have become brittle. 
+                    Legacy infrastructure cracks under high throughput. Transactions are dry. The ecosystem suffers from friction.
+                </p>
+            </div>
+            <div>
+                <h2 class="mono">SOLUTION_01</h2>
+                <h3 style="margin-bottom: 1rem;">Elastic Consensus</h3>
+                <p style="color: var(--text-muted);">
+                    Our research focuses on "connective tissue." We are engineering a layer that is not just secure, but fluid. 
+                    By utilizing Hyperledger Besu and IBFT/QBFT mechanisms, we create infrastructure that holds together without cracking.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-pine-900 mb-4">From Chaos to Clarity</h2>
-          <p class="text-xl text-ink-600">Modern businesses face complex challenges. Here's how we help.</p>
-        </div>
-        
-        <div class="flex flex-col lg:flex-row gap-12">
-          <div class="lg:w-1/2 p-8 bg-pine-50 rounded-xl shadow-lg">
-            <div class="flex items-center mb-6">
-              <div class="bg-pine-100 p-3 rounded-full mr-4">
-                <i data-feather="alert-triangle" class="text-pine-600 w-6 h-6"></i>
-              </div>
-              <h3 class="text-2xl font-bold text-ink-800">The Problem</h3>
+    <section id="deployment" class="container section-padding">
+        <div class="project-showcase">
+            <div class="project-meta">
+                <span>[ PROJECT: GELATINE ]</span>
+                <span>[ PHASE: 4 LIVE ]</span>
+                <span>[ TYPE: L1 MAINNET ]</span>
             </div>
-            <ul class="space-y-4">
-              <li class="flex items-start">
-                <div class="bg-pine-100 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-pine-600 rounded-full"></div>
-                </div>
-                <span class="text-ink-700">Disconnected tools create inefficiencies</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-100 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-pine-600 rounded-full"></div>
-                </div>
-                <span class="text-ink-700">Data scattered across multiple platforms</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-100 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-pine-600 rounded-full"></div>
-                </div>
-                <span class="text-ink-700">No single source of truth for decision making</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-100 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-pine-600 rounded-full"></div>
-                </div>
-                <span class="text-ink-700">Slow adaptation to market changes</span>
-              </li>
+
+            <h2>Deployment Case Study: The Gelatine Network</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin: 1.5rem 0; max-width: 800px;">
+                The primary implementation of our "Elastic Consensus" thesis. A high-performance ledger designed to act as the viscous layer of Web3.
+            </p>
+
+            <div style="background: rgba(45, 106, 79, 0.1); border-left: 4px solid var(--accent); padding: 2rem; margin: 2rem 0;">
+                <h4 class="mono" style="color: var(--accent-glow); margin-bottom: 1rem;">ARCHIVE LOG: THE "QUANTUM SPILL" EXPERIMENT</h4>
+                <p style="color: var(--text-muted); font-style: italic;">
+                    "Our 'Genesis Chef' sought to develop a hyper-efficient ledger within the EVM framework. 
+                    During stress testing of the consensus engine, the parameters were adjusted for maximum fluidity—effectively 'spilling' 
+                    quantum-resistant logic into the block production layer. The result was not a break, but a bounce."
+                </p>
+            </div>
+
+            <h4 class="mono" style="margin-top: 3rem;">OPERATIONAL CHARACTERISTICS</h4>
+            <ul class="feature-list">
+                <li>
+                    <strong style="color: white; display: block;">Rapid Settlement (QBFT)</strong>
+                    Blocks do not merely stack; they lock into place instantly (2s finality).
+                </li>
+                <li>
+                    <strong style="color: white; display: block;">High Cohesion</strong>
+                    Network effects create a "sticky" environment for liquidity and community retention.
+                </li>
+                <li>
+                    <strong style="color: white; display: block;">Fluid Currency ($JELLO)</strong>
+                    A native gas token designed for high-velocity circulation rather than hoarding.
+                </li>
+                <li>
+                    <strong style="color: white; display: block;">Resilient Connectivity</strong>
+                    Acting as the "connective tissue" for DApps, ensuring zero downtime.
+                </li>
             </ul>
-          </div>
-          
-          <div class="lg:w-1/2 p-8 bg-pine-600 rounded-xl shadow-lg text-white">
-            <div class="flex items-center mb-6">
-              <div class="bg-pine-700 p-3 rounded-full mr-4">
-                <i data-feather="check-circle" class="text-white w-6 h-6"></i>
-              </div>
-              <h3 class="text-2xl font-bold">The Pine Ink Solution</h3>
-            </div>
-            <ul class="space-y-4">
-              <li class="flex items-start">
-                <div class="bg-pine-700 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <span>Unified platform connecting all your tools</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-700 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <span>Centralized data with real-time analytics</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-700 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <span>AI-powered insights for better decisions</span>
-              </li>
-              <li class="flex items-start">
-                <div class="bg-pine-700 p-1 rounded-full mr-3 mt-1">
-                  <div class="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <span>Agile platform that grows with your needs</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="features" class="py-20 bg-pine-50">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-pine-900 mb-4">Rooted in Innovation</h2>
-          <p class="text-xl text-ink-600">Discover how Pine Ink helps your business grow sustainably</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="layers" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">Unified Platform</h3>
-            <p class="text-ink-600">Bring all your tools together in one place, reducing complexity and increasing efficiency.</p>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="bar-chart-2" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">Real-time Analytics</h3>
-            <p class="text-ink-600">Get instant insights with our powerful dashboard that updates in real-time.</p>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="lock" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">Enterprise Security</h3>
-            <p class="text-ink-600">Bank-level security protocols keep your data safe and compliant.</p>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="cpu" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">AI Automation</h3>
-            <p class="text-ink-600">Let our AI handle repetitive tasks so your team can focus on what matters.</p>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="repeat" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">Seamless Sync</h3>
-            <p class="text-ink-600">All your data stays synchronized across devices and platforms instantly.</p>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2">
-            <div class="bg-pine-100 p-4 rounded-xl inline-block mb-6">
-              <i data-feather="users" class="text-pine-600 w-8 h-8"></i>
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-3">Team Collaboration</h3>
-            <p class="text-ink-600">Work better together with built-in collaboration tools for your entire team.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-pine-900 mb-4">See Pine Ink in Action</h2>
-          <p class="text-xl text-ink-600">Our intuitive interface makes complex operations simple</p>
-        </div>
-        
-        <div class="relative max-w-6xl mx-auto">
-          <div class="bg-pine-600 rounded-2xl shadow-2xl overflow-hidden">
-            <div class="bg-ink-800 h-10 flex items-center px-4">
-              <div class="flex space-x-2">
-                <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div class="w-3 h-3 rounded-full bg-green-400"></div>
-              </div>
-            </div>
-            <div class="bg-gradient-to-b from-pine-100 to-white p-1">
-              <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1024&h=576" alt="Pine Forest View" class="w-full h-auto rounded-b-xl object-cover">
-            </div>
-          </div>
-          
-          <div class="absolute -bottom-8 -left-8 hidden lg:block">
-            <div class="bg-white p-4 rounded-xl shadow-lg w-64">
-              <div class="flex items-center mb-2">
-                <div class="bg-pine-100 p-2 rounded-full mr-3">
-                  <i data-feather="zap" class="text-pine-600 w-4 h-4"></i>
-                </div>
-                <p class="font-medium text-ink-800">Instant Updates</p>
-              </div>
-              <p class="text-sm text-ink-600">Data refreshes automatically so you always have the latest information.</p>
-            </div>
-          </div>
-          
-          <div class="absolute -top-8 -right-8 hidden lg:block">
-            <div class="bg-pine-600 p-4 rounded-xl shadow-lg w-64 text-white">
-              <div class="flex items-center mb-2">
-                <div class="bg-pine-700 p-2 rounded-full mr-3">
-                  <i data-feather="eye" class="text-white w-4 h-4"></i>
-                </div>
-                <p class="font-medium">Custom Views</p>
-              </div>
-              <p class="text-sm text-pine-100">Tailor your dashboard to show exactly what you need to see.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-pine-50">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-pine-900 mb-4">Meet Our Forest Keepers</h2>
-          <p class="text-xl text-ink-600">The passionate team growing Pine Ink</p>
-        </div>
-        
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="bg-white p-6 rounded-xl shadow-md text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pine-100">
-              <img src="https://xsgames.co/randomusers/avatar.php?g=male&name=randy" alt="Randy" class="w-full h-full object-cover">
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-1">Randy</h3>
-            <p class="text-pine-600 font-medium mb-3">CEO</p>
-            <p class="text-ink-600">Serial entrepreneur with 15 years in SaaS</p>
-            <div class="flex justify-center space-x-3 mt-4">
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="twitter"></i></a>
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="linkedin"></i></a>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-xl shadow-md text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pine-100">
-              <img src="https://xsgames.co/randomusers/avatar.php?g=male&name=josh" alt="Josh" class="w-full h-full object-cover">
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-1">Josh</h3>
-            <p class="text-pine-600 font-medium mb-3">CTO</p>
-            <p class="text-ink-600">Engineering lead and AI specialist</p>
-            <div class="flex justify-center space-x-3 mt-4">
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="twitter"></i></a>
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="linkedin"></i></a>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-xl shadow-md text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pine-100">
-              <img src="https://xsgames.co/randomusers/avatar.php?g=female&name=sarah" alt="Sarah" class="w-full h-full object-cover">
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-1">Sarah</h3>
-            <p class="text-pine-600 font-medium mb-3">Head of Design</p>
-            <p class="text-ink-600">UI/UX expert focused on nature-inspired flows</p>
-            <div class="flex justify-center space-x-3 mt-4">
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="twitter"></i></a>
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="linkedin"></i></a>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-xl shadow-md text-center">
-            <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-pine-100">
-              <img src="https://xsgames.co/randomusers/avatar.php?g=male&name=michael" alt="Michael" class="w-full h-full object-cover">
-            </div>
-            <h3 class="text-xl font-bold text-ink-800 mb-1">Michael</h3>
-            <p class="text-pine-600 font-medium mb-3">Head of Growth</p>
-            <p class="text-ink-600">Marketing strategist for scaling businesses</p>
-            <div class="flex justify-center space-x-3 mt-4">
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="twitter"></i></a>
-              <a href="#" class="text-ink-400 hover:text-pine-600"><i data-feather="linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 bg-white border-t border-b border-pine-100">
-      <div class="container mx-auto px-6">
-        <p class="text-center text-ink-500 uppercase text-sm font-medium tracking-wider mb-8">Backed by the Best</p>
-        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-          <div class="text-2xl font-bold text-ink-300">Forest Ventures</div>
-          <div class="text-2xl font-bold text-ink-300">Evergreen Capital</div>
-          <div class="text-2xl font-bold text-ink-300">Pinecone Fund</div>
-          <div class="text-2xl font-bold text-ink-300">Root & Branch</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-pine-50">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold text-pine-900 mb-4">As Featured In</h2>
-          <p class="text-xl text-ink-600">What the press is saying about Pine Ink</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <i data-feather="monitor" class="text-pine-600 mr-3"></i>
-              <span class="text-sm font-medium text-ink-500 uppercase tracking-widest">Digital Canopy Weekly</span>
-            </div>
-            <p class="text-ink-700 italic mb-4">"Pine Ink is revolutionizing how businesses manage their operations with its elegant, unified platform."</p>
-            <a href="#" class="text-pine-600 font-medium flex items-center">
-              Read Article
-              <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+            <a href="https://gelatine-connect.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-link">
+                Explore Gelatine Network <i data-feather="arrow-right" style="margin-left: 8px; width: 16px;"></i>
             </a>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <i data-feather="trending-up" class="text-pine-600 mr-3"></i>
-              <span class="text-sm font-medium text-ink-500 uppercase tracking-widest">Growth Grove Reports</span>
-            </div>
-            <p class="text-ink-700 italic mb-4">"In a crowded SaaS market, Pine Ink stands out with its nature-inspired approach to digital transformation."</p>
-            <a href="#" class="text-pine-600 font-medium flex items-center">
-              Read Article
-              <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-            </a>
-          </div>
-          
-          <div class="bg-white p-8 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <i data-feather="globe" class="text-pine-600 mr-3"></i>
-              <span class="text-sm font-medium text-ink-500 uppercase tracking-widest">EcoTech Global</span>
-            </div>
-            <p class="text-ink-700 italic mb-4">"The most refreshing approach to enterprise software we've seen in years. Pine Ink makes complexity disappear."</p>
-            <a href="#" class="text-pine-600 font-medium flex items-center">
-              Read Article
-              <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-            </a>
-          </div>
         </div>
-      </div>
     </section>
 
-    <section id="demo" class="py-20 bg-pine-600 text-white">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Grow with Pine Ink?</h2>
-          <p class="text-xl text-pine-100 mb-10 max-w-2xl mx-auto">Join thousands of businesses transforming their operations with our platform.</p>
-          
-          <div class="max-w-lg mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-            <form class="p-6">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="sr-only">Name</label>
-                  <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-pine-200 focus:outline-none focus:ring-2 focus:ring-pine-500 text-ink-800">
-                </div>
-                <div>
-                  <label for="email" class="sr-only">Email</label>
-                  <input type="email" id="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-pine-200 focus:outline-none focus:ring-2 focus:ring-pine-500 text-ink-800">
-                </div>
-              </div>
-              <div class="mt-4">
-                <label for="company" class="sr-only">Company</label>
-                <input type="text" id="company" placeholder="Company Name" class="w-full px-4 py-3 rounded-lg border border-pine-200 focus:outline-none focus:ring-2 focus:ring-pine-500 text-ink-800">
-              </div>
-              <button type="submit" class="w-full mt-6 bg-pine-600 hover:bg-pine-700 text-white font-medium py-3 px-6 rounded-lg shadow transition-all transform hover:scale-105 border-2 border-white">
-                Request Demo
-              </button>
-            </form>
-          </div>
+    <section id="contact" class="container section-padding">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2 style="margin-bottom: 1rem;">The Collective</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                Pine Ink is a distributed team of researchers, cryptographers, and engineers. 
+                We do not seek the spotlight. We seek stability in a chaotic digital frontier.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem;">
+                <a href="mailto:research@pine.ink" style="color: white; text-decoration: none; border: 1px solid var(--border); padding: 10px 20px;">
+                    <i data-feather="mail" style="vertical-align: middle; margin-right: 8px;"></i> Contact Research
+                </a>
+            </div>
         </div>
-      </div>
     </section>
 
-    <custom-footer></custom-footer>
-    
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="script.js"></script>
+    <footer>
+        <div class="container">
+            <p class="mono" style="opacity: 0.5;">PINE INK GROUP © 2026 // OPERATING GLOBALLY</p>
+        </div>
+    </footer>
+
     <script>
-      feather.replace();
-      document.addEventListener('DOMContentLoaded', function() {
-        const animateOnScroll = function() {
-          const elements = document.querySelectorAll('.animate-fadeIn');
-          elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (elementPosition < windowHeight - 100) {
-              element.classList.add('opacity-100', 'translate-y-0');
-            }
-          });
-        };
-        document.querySelectorAll('.animate-fadeIn').forEach(el => {
-          el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-500');
-        });
-        animateOnScroll();
-        window.addEventListener('scroll', animateOnScroll);
-      });
+        feather.replace();
     </script>
 </body>
 </html>
