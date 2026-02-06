@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pine Ink | Blockchain Research & Development</title>
-    <meta name="description" content="Pine Ink is a collective of engineers researching high-velocity decentralized infrastructure.">
+    <meta name="description"
+        content="Pine Ink is a collective of engineers researching high-velocity decentralized infrastructure.">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/feather-icons"></script>
+
     <style>
         :root {
             --bg-primary: #050505;
             --bg-secondary: #0f0f0f;
             --bg-card: #141414;
             /* Pine Green base */
-            --accent: #2d6a4f; 
+            --accent: #2d6a4f;
             /* Academic/Tech Green for highlights */
-            --accent-glow: #10b981; 
+            --accent-glow: #10b981;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border: #27272a;
@@ -35,17 +39,33 @@
         }
 
         /* Typography */
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.1;
         }
 
-        h1 { font-size: 4rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        
-        .mono { font-family: 'Courier New', monospace; letter-spacing: -0.05em; }
-        .text-accent { color: var(--accent-glow); }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mono {
+            font-family: 'Courier New', monospace;
+            letter-spacing: -0.05em;
+        }
+
+        .text-accent {
+            color: var(--accent-glow);
+        }
+
         .text-gradient {
             background: linear-gradient(to right, #fff, #9ca3af);
             -webkit-background-clip: text;
@@ -59,7 +79,9 @@
             padding: 0 2rem;
         }
 
-        .section-padding { padding: 8rem 0; }
+        .section-padding {
+            padding: 8rem 0;
+        }
 
         /* Navbar */
         nav {
@@ -98,7 +120,9 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--accent-glow); }
+        .nav-links a:hover {
+            color: var(--accent-glow);
+        }
 
         /* Hero */
         .hero {
@@ -123,8 +147,11 @@
         /* Abstract Grid Background */
         .bg-grid {
             position: absolute;
-            top: 0; left: 0; right: 0; height: 100vh;
-            background-image: 
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background-image:
                 linear-gradient(var(--border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -161,8 +188,18 @@
             border-top: 1px solid var(--border);
         }
 
-        .stat h3 { font-size: 2rem; color: white; margin-bottom: 0.25rem; }
-        .stat p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+        .stat h3 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
 
         /* Project Section (Gelatine) */
         .project-showcase {
@@ -176,7 +213,10 @@
         .project-showcase::after {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; width: 4px;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 4px;
             background: var(--accent-glow);
         }
 
@@ -196,7 +236,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-        
+
         .feature-list li {
             border-left: 2px solid var(--border);
             padding-left: 1rem;
@@ -223,18 +263,35 @@
             border-bottom: 1px solid var(--accent-glow);
             padding-bottom: 2px;
         }
-        
-        .btn-link:hover { color: var(--accent-glow); }
+
+        .btn-link:hover {
+            color: var(--accent-glow);
+        }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .stat-grid { grid-template-columns: 1fr 1fr; }
-            .project-showcase { padding: 2rem; }
-            .feature-list { grid-template-columns: 1fr; }
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-showcase {
+                padding: 2rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="bg-grid"></div>
@@ -257,10 +314,10 @@
             <span class="tagline">LABORATORY ACTIVE</span>
             <h1 class="text-gradient">We engineer the<br>resilience layer.</h1>
             <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px;">
-                Pine Ink is a technical research collective dedicated to solving blockchain brittleness. 
+                Pine Ink is a technical research collective dedicated to solving blockchain brittleness.
                 We deploy high-velocity, elastic consensus protocols for the next generation of decentralized finance.
             </p>
-            
+
             <div class="stat-grid">
                 <div class="stat">
                     <h3>Active</h3>
@@ -288,16 +345,20 @@
                 <h2 class="mono">HYPOTHESIS_01</h2>
                 <h3 style="margin-bottom: 1rem;">The Problem of Rigidity</h3>
                 <p style="color: var(--text-muted);">
-                    In a digital universe defined by "hard" forks and immutable ledgers, traditional chains have become brittle. 
-                    Legacy infrastructure cracks under high throughput. Transactions are dry. The ecosystem suffers from friction.
+                    In a digital universe defined by "hard" forks and immutable ledgers, traditional chains have become
+                    brittle.
+                    Legacy infrastructure cracks under high throughput. Transactions are dry. The ecosystem suffers from
+                    friction.
                 </p>
             </div>
             <div>
                 <h2 class="mono">SOLUTION_01</h2>
                 <h3 style="margin-bottom: 1rem;">Elastic Consensus</h3>
                 <p style="color: var(--text-muted);">
-                    Our research focuses on "connective tissue." We are engineering a layer that is not just secure, but fluid. 
-                    By utilizing Hyperledger Besu and IBFT/QBFT mechanisms, we create infrastructure that holds together without cracking.
+                    Our research focuses on "connective tissue." We are engineering a layer that is not just secure, but
+                    fluid.
+                    By utilizing Hyperledger Besu and IBFT/QBFT mechanisms, we create infrastructure that holds together
+                    without cracking.
                 </p>
             </div>
         </div>
@@ -313,14 +374,18 @@
 
             <h2>Deployment Case Study: The Gelatine Network</h2>
             <p style="font-size: 1.1rem; color: var(--text-muted); margin: 1.5rem 0; max-width: 800px;">
-                The primary implementation of our "Elastic Consensus" thesis. A high-performance ledger designed to act as the viscous layer of Web3.
+                The primary implementation of our "Elastic Consensus" thesis. A high-performance ledger designed to act
+                as the viscous layer of Web3.
             </p>
 
-            <div style="background: rgba(45, 106, 79, 0.1); border-left: 4px solid var(--accent); padding: 2rem; margin: 2rem 0;">
-                <h4 class="mono" style="color: var(--accent-glow); margin-bottom: 1rem;">ARCHIVE LOG: THE "QUANTUM SPILL" EXPERIMENT</h4>
+            <div
+                style="background: rgba(45, 106, 79, 0.1); border-left: 4px solid var(--accent); padding: 2rem; margin: 2rem 0;">
+                <h4 class="mono" style="color: var(--accent-glow); margin-bottom: 1rem;">ARCHIVE LOG: THE "QUANTUM
+                    SPILL" EXPERIMENT</h4>
                 <p style="color: var(--text-muted); font-style: italic;">
-                    "Our 'Genesis Chef' sought to develop a hyper-efficient ledger within the EVM framework. 
-                    During stress testing of the consensus engine, the parameters were adjusted for maximum fluidity—effectively 'spilling' 
+                    "Our 'Genesis Chef' sought to develop a hyper-efficient ledger within the EVM framework.
+                    During stress testing of the consensus engine, the parameters were adjusted for maximum
+                    fluidity—effectively 'spilling'
                     quantum-resistant logic into the block production layer. The result was not a break, but a bounce."
                 </p>
             </div>
@@ -345,7 +410,7 @@
                 </li>
             </ul>
 
-            <a href="https://gelatine-connect.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-link">
+            <a href="https://gelatine.pine.ink" target="_blank" rel="noopener noreferrer" class="btn-link">
                 Explore Gelatine Network <i data-feather="arrow-right" style="margin-left: 8px; width: 16px;"></i>
             </a>
         </div>
@@ -355,11 +420,12 @@
         <div style="text-align: center; max-width: 600px; margin: 0 auto;">
             <h2 style="margin-bottom: 1rem;">The Collective</h2>
             <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                Pine Ink is a distributed team of researchers, cryptographers, and engineers. 
+                Pine Ink is a distributed team of researchers, cryptographers, and engineers.
                 We do not seek the spotlight. We seek stability in a chaotic digital frontier.
             </p>
             <div style="display: flex; justify-content: center; gap: 2rem;">
-                <a href="mailto:research@pine.ink" style="color: white; text-decoration: none; border: 1px solid var(--border); padding: 10px 20px;">
+                <a href="mailto:research@pine.ink"
+                    style="color: white; text-decoration: none; border: 1px solid var(--border); padding: 10px 20px;">
                     <i data-feather="mail" style="vertical-align: middle; margin-right: 8px;"></i> Contact Research
                 </a>
             </div>
@@ -369,11 +435,24 @@
     <footer>
         <div class="container">
             <p class="mono" style="opacity: 0.5;">PINE INK GROUP © 2026 // OPERATING GLOBALLY</p>
+            <button class="policy-btn" onclick="showPrivacy()">Privacy Policy</button>
         </div>
+
     </footer>
 
+    <!-- Legal Modal -->
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLegalModal()">&times;</span>
+            <h2 id="legalModalTitle"></h2>
+            <div id="legalModalContent"></div>
+        </div>
+    </div>
+
+    <script src="legal-modals.js"></script>
     <script>
         feather.replace();
     </script>
 </body>
+
 </html>
